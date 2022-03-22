@@ -4,4 +4,4 @@ RUN apk update && apk add bash
 WORKDIR /app
 COPY . .
 
-ENTRYPOINT ./job.sh
+ENTRYPOINT ["./job.sh"]

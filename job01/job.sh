@@ -1,13 +1,17 @@
 #!/bin/bash
 
+ORG="$1"
 if [[ "$ORG" == "" ]]; then 
     >&1 echo "Missing ORG variable"
     exit 1
 fi
+
+PROGRAM="$2"
 if [[ "$PROGRAM" == "" ]]; then 
     >&1 echo "Missing PROGRAM variable"
     exit 1
 fi
+EXITCODE=${3-0}
 
 echo "---- JOB STARTED ----"
 echo "  ORG: $ORG"
