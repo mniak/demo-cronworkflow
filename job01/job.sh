@@ -18,6 +18,7 @@ for i in {1..5}; do
     echo -n "($i) Doing something... "
     sleep 2
     if [[ i -eq 3 && $EXITCODE -gt 0 ]]; then
+        echo "Exiting with code $EXITCODE"
         exit $EXITCODE
     fi
     echo "Done!"

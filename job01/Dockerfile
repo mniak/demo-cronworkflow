@@ -1,6 +1,7 @@
 FROM alpine:3.14
-CMD ["/app/entrypoint.sh"]
-COPY . .
-RUN chmod +x job.sh
+RUN apk update && apk add bash
 
-CMD ["./job.sh"]
+WORKDIR /app
+COPY . .
+
+ENTRYPOINT ./job.sh
