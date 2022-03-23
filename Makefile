@@ -1,28 +1,30 @@
-cluster-up:
-	k3d registry create demo-cronworkflow -p 5111
-	k3d cluster create --registry-use k3d-demo-cronworkflow:5111 demo-cronworkflow
-	kubectx k3d-demo-cronworkflow
-	make install-argo
+DOCKER_USERNAME=mniak
 
-cluster-down:
-	k3d registry delete demo-cronworkflow
-	k3d cluster delete demo-cronworkflow
+up:
+	k3d cluster create argo
+	kubectx k3d-argo
+	make install-argo
+	make create-demo-ns
+
+down:
+	k3d cluster delete argo
 
 install-argo:
 	kubectl create ns argo
 	kubens argo
 	kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
 
-image-build:
-	docker build ./job01 -t localhost:5111/demo-cronworkflow-job01
-	docker push localhost:5111/demo-cronworkflow-job01
-
-image-test:
-	make image-build
-	docker run --rm localhost:5111/demo-cronworkflow-job01 TN-1234 555
-
-demo-ns:
+create-demo-ns:
 	kubectl create ns demo
+	kubens demo
+
+build:
+	docker build ./job01 -t ${DOCKER_USERNAME}/demo-cronworkflow-job01
+	docker push ${DOCKER_USERNAME}/demo-cronworkflow-job01
+
+test-image:
+	make build
+	docker run --rm ${DOCKER_USERNAME}/demo-cronworkflow-job01 TN-1234 555
 
 apply:
 	argo delete demojob

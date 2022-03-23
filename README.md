@@ -9,8 +9,11 @@ Demo of Argo ~~Cron~~ Workflow
 
 #### Usage:
 ```bash
-make cluster-up
-make image-build
+make up
+make build
 make apply
 make logs
+
+# Shutdown the cluster
+make down
 ```
