@@ -9,8 +9,8 @@ Demo of Argo ~~Cron~~ Workflow
 
 #### Usage:
 ```bash
-./do cluster-up
-./do image-build
-./do apply
-./do logs
+make cluster-up
+make image-build
+make apply
+make logs
 ```
