@@ -2,13 +2,13 @@
 
 ORG="$1"
 if [[ "$ORG" == "" ]]; then 
-    >&1 echo "Missing ORG variable"
+    >&2 echo "Missing ORG variable"
     exit 1
 fi
 
 PROGRAM="$2"
 if [[ "$PROGRAM" == "" ]]; then 
-    >&1 echo "Missing PROGRAM variable"
+    >&2 echo "Missing PROGRAM variable"
     exit 1
 fi
 ERRORRATE=${3-0}

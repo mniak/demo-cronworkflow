@@ -26,7 +26,7 @@ spec:
       retryStrategy:
         limit: 10
       container:
-        image: mniak/demo-cronworkflow-job01
+        image: k3d-demo-cronworkflow:5111/demo-cronworkflow-job01
         command: ["./job.sh"]
         args:
           - "{{inputs.parameters.Org}}"
