@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: demojob
+spec:
+  entrypoint: run-job01
+  arguments:
+    parameters:
+      - name: Org
+        value: "TN-1234"
+      - name: Program
+        value: "555"
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 999
+  templates:
+    - name: run-job01
+      inputs:
+        parameters:
+          - name: Org
+          - name: Program
+          - name: ExitCode
+            default: 0
+      retryStrategy:
+        limit: 10
+      container:
+        image: mniak/demo-cronworkflow-job01
+        command: ["./job.sh"]
+        args:
+          - "{{inputs.parameters.Org}}"
+          - "{{inputs.parameters.Program}}"
+          - "{{inputs.parameters.ExitCode}}"

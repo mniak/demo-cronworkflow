@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: run-job01
+spec:
+  templates:
+  - name: job01
+    inputs:
+      parameters:
+        - name: Org
+        - name: Program
+        - name: ExitCode
+          default: 0
+    retryStrategy:
+      limit: 10
+    container:
+      image: demo-cronworkflow:job01
+      args: 
+        - "{{inputs.parameters.Org}}"
+        - "{{inputs.parameters.Program}}"
+        - "{{inputs.parameters.ExitCode}}"
+

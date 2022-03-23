@@ -1,2 +1,2 @@
 resources:
-  - argo-workflow-template.yaml
+  - workflow-template.yaml
