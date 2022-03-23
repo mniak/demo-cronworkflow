@@ -11,12 +11,20 @@ if [[ "$PROGRAM" == "" ]]; then
     >&1 echo "Missing PROGRAM variable"
     exit 1
 fi
-EXITCODE=${3-0}
+ERRORRATE=${3-0}
+
+RAND=$((RANDOM % 100 + 1))
+if [[ $RAND -le $ERRORRATE ]]; then
+    EXITCODE=$RAND
+else
+    EXITCODE=0
+fi
 
 echo "---- JOB STARTED ----"
 echo "  ORG: $ORG"
 echo "  PROGRAM: $PROGRAM"
-echo "  EXITCODE: $EXITCODE"
+echo "  ERRORRATE: $ERRORRATE%"
+echo "  RAND: $RAND, EXITCODE: $EXITCODE"
 echo ""
 for i in {1..5}; do
     echo -n "($i) Doing something... "

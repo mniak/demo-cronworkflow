@@ -32,4 +32,4 @@ apply: k8s/workflow.yaml
 .PHONY: logs
 logs:
 	argo get demojob
-	argo logs demojob
+	argo logs demojob --follow
