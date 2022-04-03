@@ -1,3 +1,4 @@
+# Change this variable
 DOCKER_USERNAME=mniak
 
 up:
