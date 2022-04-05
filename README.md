@@ -20,6 +20,7 @@ make image
 # Run 
 make run-wf
 # Or configure the workflow to run scheduled
+make apply-cron
 
 # Check
 make show-logs
