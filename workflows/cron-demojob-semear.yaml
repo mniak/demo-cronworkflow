@@ -3,7 +3,7 @@ kind: CronWorkflow
 metadata:
   name: demojob-semear
 spec:
-  schedule: "*/3 * * * *" # At every 3rd minute.
+  schedule: "* * * * *" # At every minute.
   concurrencyPolicy: Forbid
   startingDeadlineSeconds: 21600 # 6 hours
   workflowSpec:
