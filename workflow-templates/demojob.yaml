@@ -3,9 +3,6 @@ kind: WorkflowTemplate
 metadata:
   name: demojob-template
 spec:
-  securityContext:
-    runAsNonRoot: true
-    runAsUser: 999
   templates:
     - name: demojob
       inputs:
