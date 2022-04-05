@@ -9,6 +9,6 @@ spec:
   arguments:
     parameters:
       - name: Org
-        value: "TN-DEMO-ORG-0001"
+        value: "Banco-PedraPreta-01"
       - name: Program
-        value: "777"
+        value: "771"
