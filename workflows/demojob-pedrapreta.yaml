@@ -9,6 +9,8 @@ spec:
   arguments:
     parameters:
       - name: Org
-        value: "Banco-PedraPreta-01"
+        value: "Banco-PedraPreta"
       - name: Program
         value: "771"
+      - name: ErrorRate
+        value: 70 # Fail 70% of the runs

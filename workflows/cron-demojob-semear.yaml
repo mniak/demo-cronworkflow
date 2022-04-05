@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: demojob-semear
+spec:
+  schedule: "*/3 * * * *" # At every 3rd minute.
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 21600 # 6 hours
+  workflowSpec:
+    entrypoint: demojob
+    workflowTemplateRef:
+        name: demojob-template
+    arguments:
+      parameters:
+        - name: Org
+          value: "Banco-Semear"
+        - name: Program
+          value: "123"
+        
+

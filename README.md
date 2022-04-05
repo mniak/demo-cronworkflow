@@ -10,6 +10,8 @@ Demo of Argo ~~Cron~~ Workflow
 #### Usage:
 Open the file `Makefile` and change the variables in the indicated places.
 
+Also, change the username prefix in the file `workflow-templates/demojob-template.yaml`
+
 
 ```bash
 make cluster
