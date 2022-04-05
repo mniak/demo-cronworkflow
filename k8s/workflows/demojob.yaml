@@ -3,32 +3,12 @@ kind: Workflow
 metadata:
   generateName: demojob-
 spec:
-  entrypoint: run-job01
+  entrypoint: demojob
+  workflowTemplateRef:
+      name: demojob-template
   arguments:
     parameters:
       - name: Org
-        value: "TN-1234"
+        value: "TN-DEMO-ORG-0001"
       - name: Program
-        value: "555"
-      - name: ErrorRate
-        value: 75
-  securityContext:
-    runAsNonRoot: true
-    runAsUser: 999
-  templates:
-    - name: run-job01
-      inputs:
-        parameters:
-          - name: Org
-          - name: Program
-          - name: ErrorRate
-            default: 0
-      retryStrategy:
-        limit: 10
-      container:
-        image: mniak/demo-cronworkflow-job01
-        command: ["./job.sh"]
-        args:
-          - "{{inputs.parameters.Org}}"
-          - "{{inputs.parameters.Program}}"
-          - "{{inputs.parameters.ErrorRate}}"
+        value: "777"

@@ -24,6 +24,7 @@ test-image: image
 	docker run --rm ${DOCKER_USERNAME}/demo-cronworkflow-job01 TN-1234 555 70
 
 run-job:
+	kubectl apply -f k8s/templates/demojob.yaml
 	argo submit --log k8s/workflows/demojob.yaml
 
 show-logs:

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: demojob-template
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 999
+  templates:
+    - name: demojob
+      inputs:
+        parameters:
+          - name: Org
+          - name: Program
+          - name: ErrorRate
+            default: 15
+      retryStrategy:
+        limit: 10
+      container:
+        image: mniak/demo-cronworkflow-job01
+        command: ["./job.sh"]
+        args:
+          - "{{inputs.parameters.Org}}"
+          - "{{inputs.parameters.Program}}"
+          - "{{inputs.parameters.ErrorRate}}"
