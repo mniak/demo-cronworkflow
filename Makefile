@@ -4,12 +4,15 @@ DOCKER_USERNAME=mniak
 cluster:
 	k3d cluster create argo
 	kubectx k3d-argo
-	kubectl create ns argo
-	kubens argo
-	kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
+	make install-argo
 	kubectl create ns demo
 	kubens demo
 
+install-argo:
+	kubectl create ns argo
+	kubens argo
+	kubectl apply -f https://github.com/argoproj/argo-workflows/releases/download/v3.3.1/install.yaml
+	
 delete-cluster:
 	k3d cluster delete argo
 
