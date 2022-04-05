@@ -24,6 +24,6 @@ apply:
 	argo delete demojob
 	kubectl create -f k8s/workflow.yaml
 
-logs:
+show-logs:
 	argo get demojob
 	argo logs demojob --follow

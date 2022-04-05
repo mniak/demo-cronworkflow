@@ -19,7 +19,7 @@ make image
 make apply
 
 # Check
-make logs
+make show-logs
 
 # Shutdown the cluster
 make delete-cluster
