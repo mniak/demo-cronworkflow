@@ -1,13 +1,13 @@
 # Change this variable
 DOCKER_USERNAME=mniak
 
-up:
+cluster:
 	k3d cluster create argo
 	kubectx k3d-argo
 	make install-argo
 	make create-demo-ns
 
-down:
+delete-cluster:
 	k3d cluster delete argo
 
 install-argo:
@@ -19,7 +19,7 @@ create-demo-ns:
 	kubectl create ns demo
 	kubens demo
 
-build:
+image:
 	docker build ./job01 -t ${DOCKER_USERNAME}/demo-cronworkflow-job01
 	docker push ${DOCKER_USERNAME}/demo-cronworkflow-job01
 
