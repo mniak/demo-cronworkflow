@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: demojob
+  generateName: hello-world-
 spec:
   entrypoint: run-job01
   arguments:
