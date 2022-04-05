@@ -16,7 +16,8 @@ make cluster
 make image
 
 # Run 
-make apply
+make run-wf
+# Or configure the workflow to run scheduled
 
 # Check
 make show-logs

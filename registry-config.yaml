@@ -1,4 +1,0 @@
-mirrors:
-  "k3d-demo-cronworkflow:5111":
-    endpoint:
-      - "https://k3d-demo-cronworkflow:5111"
