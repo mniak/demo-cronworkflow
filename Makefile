@@ -18,7 +18,7 @@ image:
 	docker push ${DOCKER_USERNAME}/demo-cronworkflow-job01
 
 test-image: image
-	docker run --rm ${DOCKER_USERNAME}/demo-cronworkflow-job01 TN-1234 555
+	docker run --rm ${DOCKER_USERNAME}/demo-cronworkflow-job01 TN-1234 555 70
 
 apply:
 	argo delete demojob
